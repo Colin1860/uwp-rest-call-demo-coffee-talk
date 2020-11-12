@@ -12,7 +12,7 @@
     <Grid>
         <muxc:NavigationView  x:Name="mainNavView" ItemInvoked="NavView_ItemInvoked">
             <muxc:NavigationView.MenuItems>
-                <muxc:NavigationViewItem  Content="Home" Tag="HomeView">
+                <muxc:NavigationViewItem  Content="Home" Tag="LandingView">
                     <muxc:NavigationViewItem.Icon>
                         <FontIcon Glyph="&#xEA8A;"/>
                     </muxc:NavigationViewItem.Icon>

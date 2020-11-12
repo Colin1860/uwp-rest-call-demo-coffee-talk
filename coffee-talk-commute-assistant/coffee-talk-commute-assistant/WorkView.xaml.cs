@@ -3,44 +3,17 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Linq;
-using System.Runtime.CompilerServices;
 using Windows.UI.Notifications;
 using Windows.UI.Xaml.Controls;
 
 namespace coffee_talk_commute_assistant
 {
-    public sealed partial class WorkView : Page, INotifyPropertyChanged
+    public sealed partial class WorkView : Page
     {
         public ObservableCollection<Connection> Connections { get; set; } = new ObservableCollection<Connection>();
 
-        private string home = "Augsburg";
-        public string Home
-        {
-            get
-            {
-                return home;
-            }
-            set
-            {
-                home = value;
-                NotifyPropertyChanged();
-            }
-        }
-
-        private string work = "München Hbf";
-        public string Work
-        {
-            get
-            {
-                return work;
-            }
-            set
-            {
-                work = value;
-                NotifyPropertyChanged();
-            }
-        }
+        public string Home { get; set; } = "Augsburg";
+        public string Work { get; set; } = "München Hbf";
 
         public WorkView()
         {
@@ -58,22 +31,6 @@ namespace coffee_talk_commute_assistant
             List<Connection> responseFromDB = await DBClient.getPossibleTrains(Work, locationid, DateTime.Now);
             Connections = new ObservableCollection<Connection>(responseFromDB);
             ListOfConnections.ItemsSource = Connections;
-        }
-
-        public async void UpdateConnections(String time)
-        {
-            Connections.ElementAt(0);
-            
-        }
-
-        private void Button_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
-        {
-            UpdateConnections(DateTime.Now.ToString());
-        }
-
-        private void NotifyPropertyChanged([CallerMemberName] string propertyName = "")
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
         private async void ListOfConnections_SelectionChanged(object sender, SelectionChangedEventArgs e)

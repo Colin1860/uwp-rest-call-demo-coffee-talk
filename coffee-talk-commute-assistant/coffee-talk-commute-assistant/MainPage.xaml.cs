@@ -28,7 +28,7 @@ namespace coffee_talk_commute_assistant
 
             Current = this;
 
-            contentFrame.Navigate(typeof(WorkView));
+            contentFrame.Navigate(typeof(LandingPage));
         }
 
         /// <summary>
@@ -60,6 +60,9 @@ namespace coffee_talk_commute_assistant
             {
                 case "ConnectionsView":
                     contentFrame.Navigate(typeof(WorkView));
+                    break;
+                case "LandingView":
+                    contentFrame.Navigate(typeof(LandingPage));
                     break;
             }
         }
